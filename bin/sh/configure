@@ -29,6 +29,10 @@ if [ -a $CONFIG ]; then
 else
 	echo "rpcuser=$RPCUSER" >> $CONFIG
 	echo "rpcpassword=$RPCPASS" >> $CONFIG
+	if [ -e "deerserv/deersrv/costants.py" ]; then
+		echo "RPC_USER = \"$RPCUSER\"" >> deerserv/deersrv/costants.py
+		echo "RPC_PASSWORD = \"$RPCPASS\"" >> deerserv/deersrv/costants.py
+	fi
 	echo "txindex=1" >> $CONFIG
 	echo "daemon=1" >> $CONFIG
 	echo "server=1" >> $CONFIG
