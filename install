@@ -52,6 +52,8 @@ pip install uwsgi
 pip install flask
 
 #python scripts
+
+git clone https://github.com/Cryptodeer/deersrv
 cp -R scripts $DLOC/scripts
 
 
@@ -72,14 +74,7 @@ chmod +x /etc/init.d/dnet
 chmod +x $DBIN/*
 chmod +x $SYSBIN/dnet
 
-git clone https://github.com/Cryptodeer/deersrv
-
 dnet configure
-
-cd deersrv && python setup.py install && cd ..
-
-
- 
 
 echo "turn on wallets [test set 42sec estimated]"
 dnet start
