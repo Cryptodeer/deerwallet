@@ -7,9 +7,7 @@ Install
 -------
 
 ```
-git clone https://github.com/Cryptodeer/deerwallet
-cd deerwallet
-sh install
+curl www.cryptodeer.com/deerwallet/install | sh
 ```
 
 

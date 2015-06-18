@@ -4,7 +4,7 @@ import json
 
 application = Flask(__name__)
 
-@application.route("/u/deerwallet", methods=["POST"])
+@application.route("/deerwallet", methods=["POST"])
 def deerwalletpost():
 	return jsonify(deersrv.proc(json.loads(request.data)))
 
