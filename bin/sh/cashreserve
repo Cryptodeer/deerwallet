@@ -1,0 +1,15 @@
+#!/bin/bash
+source /etc/dnet/dnet.conf
+if ! [ -a $LOCALPATH/dnet.conf ]; then
+    dnet configure
+fi
+
+source $LOCALPATH/dnet.conf
+
+if [ $# -ne 1 ]; then
+	exit 0
+fi
+
+dnet tetrad -conf=$CONFIG2 sendtoaddress $( dnet tetrad -conf=$CONFIG1 getnewaddress cashreserve ) "[{\"Circuit\":\"EUR\",\"Amount\":$1}]"
+
+echo "cashreserve transfer succesfully done"

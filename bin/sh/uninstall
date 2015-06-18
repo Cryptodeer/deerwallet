@@ -1,0 +1,14 @@
+#!/bin/sh
+# del bin dnet
+dnet stop
+
+if [ -e /usr/bin/dnet ]; then
+  rm -rf /usr/bin/dnet
+fi
+# del datadir
+find / -name .dnet | while read line; do rm -rf $line ; done
+#del etc dir
+rm -rf /etc/dnet
+rm -rf /usr/local/openresty
+
+rm -rf /etc/init.d/dnet

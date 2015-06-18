@@ -1,0 +1,85 @@
+#!/bin/sh 
+if ! [ "$(whoami)" = "root" ] ; then
+  echo "you should be root!"
+  exit
+fi
+
+useradd --uid 1199 dnet
+
+SYSBIN=/usr/bin
+
+DLOC=/etc/dnet
+DBIN=/etc/dnet/bin
+DWALLET=/etc/dnet/wallet
+
+EXT=external
+CONF=conf
+BIN=bin
+BINSH=bin/sh
+
+mkdir -p $DBIN
+mkdir -p $DWALLET
+
+#bin scripts
+cp $BIN/dnet $DBIN
+ln -s $DBIN/dnet $SYSBIN/dnet
+cp $BINSH/* $DBIN
+
+#dnet.conf
+cp $CONF/dnet.conf $DLOC/dnet.conf
+cp -R $CONF/nginx  $DLOC/nginx
+
+#build and cp tetrad
+curl www.cryptodeer.com/tetra/install | sh
+cp tetra/src/tetrad $DBIN
+
+#openresty
+cd $EXT
+apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make wget
+wget https://github.com/Cryptodeer/openresty/archive/v1.7.10.1.tar.gz
+tar -zxf v1.7.10.1.tar.gz 
+cd openresty-1.7.10.1 && cp ../../$BIN/nginx-install .
+sh nginx-install
+cd ngx_openresty-1.7.10.1 && cp ../nginx-install . 
+sh nginx-install
+cd ../../..
+
+# uwsgi
+apt-get install -y python python-dev
+python external/get-pip.py
+pip install --upgrade pip
+pip install uwsgi
+pip install flask
+
+curl www.cryptodeer.com/deersrv/install | sh
+
+#python scripts
+cp -R scripts $DLOC/scripts
+
+
+mkdir -p /etc/dnet/plugins
+rm /usr/local/openresty/nginx/conf/nginx.conf
+cp $CONF/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
+cp $CONF/dnet.nginx.conf /etc/dnet/dnet.nginx.conf
+mkdir -p /var/log/dnet/nginx/
+touch /var/log/dnet/nginx/error.log
+touch /var/log/dnet/nginx/access.log
+
+
+
+#dnet nginx init.d
+cp bin/dnet-daemon /etc/init.d/dnet
+
+chmod +x /etc/init.d/dnet
+chmod +x $DBIN/*
+chmod +x $SYSBIN/dnet
+
+dnet configure
+echo "turn on wallets"
+dnet start
+sleep 5
+dnet importkey
+sleep 30
+dnet cashreserve 100000000
+
+echo "installation tarminated succesfully"

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ $# -eq 1 && "$1" = "-gx" ]]; then 
+	nano /etc/dnet/dnet.nginx.conf
+	exit 1
+fi
+
+nano /etc/dnet/dnet.conf

@@ -1,0 +1,13 @@
+#!/bin/bash
+source /etc/dnet/dnet.conf
+if ! [ -a $LOCALPATH/dnet.conf ]; then
+    dnet configure
+fi
+
+source $LOCALPATH/dnet.conf
+
+if [ $# -eq 0 ]; then
+	exit 0
+fi
+
+dnet tetrad -conf=$CONFIG2 $1 $2

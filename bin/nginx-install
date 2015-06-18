@@ -1,0 +1,4 @@
+#!/bin/sh
+./configure \
+	--with-http_stub_status_module
+make && make install

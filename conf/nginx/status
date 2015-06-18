@@ -1,0 +1,7 @@
+
+location = /status {
+    stub_status on;
+    #allow 127.0.0.1;
+    #allow 188.226.155.242;
+    #deny all;
+}

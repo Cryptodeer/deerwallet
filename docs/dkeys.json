@@ -1,0 +1,14 @@
+[
+	{
+		prio:2,
+		priv:"VZPargjGLwU4HAmrc21u7SydrEYNSrzQQwdB4n4PSQFMzyFCiv8J",
+		public: "02a001cc63d69dc398d0ace79f7c569b0b6cf1e4dfcd305d528fbfdad0fd5db501",
+		address: "TLB9rXUgpjvyYHofojGUxqSgUkhsS6NEGa",
+	},
+	{
+		prio:1,
+		priv:"VgP2ryBYbttyBtoFT3G6b82wVMvJEaNmRYPSZKXjpG5TSZN6hbrd",
+		public: "03882e656b4a7aa105966f43320cdb86085b1841581678eabea5847cb3a7424966",
+		address: "TDS5xSornomJy5SCHQtXoeAApXTdChJRLn",
+	}
+]

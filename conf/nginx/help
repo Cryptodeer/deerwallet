@@ -1,0 +1,51 @@
+    location = /help {
+        default_type text/html;
+            content_by_lua '
+local helpstr = [[
+{
+    "/help": {
+        "description":"this output"
+        "method":"GET"
+        "request":[
+            {
+                            
+            }
+        ]
+    },
+    "/status": {
+        "description":"traffic status"
+        "method":"GET"
+        "request":[
+            {
+                            
+            }
+        ]
+    },
+    "/deerwallet": {
+        "description":"wallet endpoint"
+        "method":"POST"
+        "request":[
+            {
+                "id":"1430759611+IDdispositivo",
+                "params":[
+                    "ACTION=CreateAccount",
+                    "PUBLICKEY",
+                    TIMESTAMP,
+                    "IDDISPOSITIVO", 
+                    "SIGNATURE"
+                ]
+            }
+        ],
+        "response":[
+            {
+                result: [ {  }, timestamp]
+                error: "error info"
+                id: id
+            }
+        ]
+    }
+}
+]]
+                ngx.say(helpstr)
+            ';
+    }
