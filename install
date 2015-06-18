@@ -75,7 +75,7 @@ chmod +x $SYSBIN/dnet
 dnet configure
 
 git clone https://github.com/Cryptodeer/deersrv
-if [ -a /etc/dnet/nginx/deerwallet ]; then
+if [ -a /etc/dnet/data/tetra.conf ]; then
 	source /etc/dnet/data/tetra.conf
 	cat deersrv/deersrv/costants.py | sed "s/{{rpcuser}}/$rpcuser/g" > deersrv/deersrv/costants.py
 	cat deersrv/deersrv/costants.py | sed "s/{{rpcpassword}}/$rpcpassword/g" > deersrv/deersrv/costants.py
