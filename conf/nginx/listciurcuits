@@ -1,7 +1,6 @@
-
-location = /listcircuit {
-     default_type application/json;
-        content_by_lua '
-            ngx.say([[ ["EUR"] ]])
-        ';
-}
+#location = /listcircuit {
+#     default_type application/json;
+#        content_by_lua '
+#            ngx.say([[ ["EUR"] ]])
+#        ';
+#}

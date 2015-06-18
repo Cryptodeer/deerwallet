@@ -1,4 +1,4 @@
-location /u {
+location / {
     include            uwsgi_params;
     uwsgi_pass         uwsgicluster;
 

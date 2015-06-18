@@ -1,9 +1,9 @@
-location = /fullrpc {
-    allow 127.0.0.1;
-	deny all;
-    proxy_set_header Host 127.0.0.1;
-    proxy_set_header X-Real-IP 127.0.0.1;
-    proxy_set_header X-Forwarded-For 127.0.0.1;
-    proxy_set_header authorization "Basic {{auth}}";
-    proxy_pass http://localhost:33001/;
-}
+#location = /fullrpc {
+#    allow 127.0.0.1;
+#	deny all;
+#    proxy_set_header Host 127.0.0.1;
+#    proxy_set_header X-Real-IP 127.0.0.1;
+#    proxy_set_header X-Forwarded-For 127.0.0.1;
+#    proxy_set_header authorization "Basic {{auth}}";
+#    proxy_pass http://localhost:33001/;
+#}
