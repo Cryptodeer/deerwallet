@@ -1,7 +1,7 @@
 #!/bin/sh
 # del bin dnet
 dnet stop
-
+echo "removing all data ..."
 if [ -e /usr/bin/dnet ]; then
   rm -rf /usr/bin/dnet
 fi

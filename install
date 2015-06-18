@@ -77,18 +77,20 @@ dnet configure
 git clone https://github.com/Cryptodeer/deersrv
 if [ -a /etc/dnet/data/tetra.conf ]; then
 	source /etc/dnet/data/tetra.conf
-	cat deersrv/deersrv/costants.py | sed "s/{{rpcuser}}/$rpcuser/g" > deersrv/deersrv/costants.py
-	cat deersrv/deersrv/costants.py | sed "s/{{rpcpassword}}/$rpcpassword/g" > deersrv/deersrv/costants.py
+	cat deersrv/deersrv/costants.py | sed "s/{{rpcuser}}/$rpcuser/g" > foo
+	cat foo | sed "s/{{rpcpassword}}/$rpcpassword/g" > foobar
+	rm deersrv/deersrv/costants.py
+	cat foobar > deersrv/deersrv/costants.py && rm foo && rm foobar
 	cd deersrv && python setup.py install && cd ..
 fi
 
  
 
-echo "turn on wallets"
+echo "turn on wallets [test set 40sec estimated]"
 dnet start
 sleep 5
 dnet importkey
-sleep 30
+sleep 35
 dnet cashreserve 100000000
 
 echo "installation tarminated succesfully"
