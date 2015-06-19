@@ -52,8 +52,9 @@ pip install uwsgi
 pip install flask
 
 #python scripts
-
+cd scripts
 git clone https://github.com/Cryptodeer/deersrv
+cd ..
 cp -R scripts $DLOC/scripts
 
 
