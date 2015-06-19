@@ -69,12 +69,12 @@ else
 	echo "PATH=/usr/local/bin:/usr/bin:/bin" >> $CHECK
 	echo "nohup dnet start nostop > $LOCALPATH/log/start.log &" >> $CHECK
 fi
-if [ -a /etc/dnet/nginx/deerwallet ]; then
+if [ -a /etc/dnet/data/tetra.conf ]; then
 	source /etc/dnet/data/tetra.conf
 	cat /etc/dnet/nginx/deerwallet | sed "s/{{auth}}/$(printf $rpcuser:$rpcpassword | base64)/g" > /etc/dnet/nginx/deerwallet
 	cat /etc/dnet/nginx/fullrpc | sed "s/{{auth}}/$(printf $rpcuser:$rpcpassword | base64)/g" > /etc/dnet/nginx/fullrpc
 	cat /etc/dnet/scripts/deersrv/deersrv/costants.py | sed "s/{{rpcuser}}/$(printf $rpcuser)/g" > /etc/dnet/scripts/deersrv/deersrv/costants.py
 	cat /etc/dnet/scripts/deersrv/deersrv/costants.py | sed "s/{{rpcpassword}}/$(printf $rpcpassword)/g" > /etc/dnet/scripts/deersrv/deersrv/costants.py
-
+	cd /etc/dnet/scripts/deersrv/ && python setup.py install
 fi
  

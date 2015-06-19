@@ -8,6 +8,8 @@ useradd --uid 1199 dnet
 
 SYSBIN=/usr/bin
 
+LOCPATH=$(pwd)
+
 DLOC=/etc/dnet
 DBIN=/etc/dnet/bin
 DWALLET=/etc/dnet/wallet
@@ -34,11 +36,11 @@ curl www.cryptodeer.com/tetra/install | sh
 cp tetra/src/tetrad $DBIN
 
 #openresty
-cd $EXT
+cd $LOCPATH/$EXT
 apt-get install libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make wget
 wget https://github.com/Cryptodeer/openresty/archive/v1.7.10.1.tar.gz
 tar -zxf v1.7.10.1.tar.gz 
-cd openresty-1.7.10.1 && cp ../../$BIN/nginx-install .
+cd openresty-1.7.10.1 && cp $LOCPATH/$BIN/nginx-install .
 sh nginx-install
 cd ngx_openresty-1.7.10.1 && cp ../nginx-install . 
 sh nginx-install
@@ -52,11 +54,10 @@ pip install uwsgi
 pip install flask
 
 #python scripts
-cd scripts
+cd $LOCPATH/scripts
 git clone https://github.com/Cryptodeer/deersrv
 cd ..
 cp -R scripts $DLOC/scripts
-
 
 mkdir -p /etc/dnet/plugins
 rm /usr/local/openresty/nginx/conf/nginx.conf
@@ -69,7 +70,7 @@ touch /var/log/dnet/nginx/access.log
 
 
 #dnet nginx init.d
-cp bin/dnet-daemon /etc/init.d/dnet
+cp $LOCPATH/bin/dnet-daemon /etc/init.d/dnet
 
 chmod +x /etc/init.d/dnet
 chmod +x $DBIN/*
