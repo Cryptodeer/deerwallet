@@ -20,5 +20,5 @@ else
 
 	crontab -l | sed "/dnetcheckscript/d" | crontab -
 	crontab -l | { cat; echo "* * * * * sh $LOCALPATH/dnetcheckscript"; } | crontab -
-	service dnet start
+	/etc/init.d/dnet start
 fi

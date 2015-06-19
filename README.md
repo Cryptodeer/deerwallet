@@ -22,7 +22,7 @@ dnet < start | stop >
 dnet help
 
 # restart openresty
-service dnet restart
+/etc/init.d/dnet restart
 ```
 
 

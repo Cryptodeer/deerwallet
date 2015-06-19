@@ -1,6 +1,6 @@
 #!/bin/bash
 source /etc/dnet/dnet.conf
-service dnet stop
+/etc/init.d/dnet stop
 if ! [ -a $LOCALPATH/dnet.conf ]; then
     dnet configure
 fi
