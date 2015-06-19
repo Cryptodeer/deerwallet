@@ -77,12 +77,9 @@ chmod +x $SYSBIN/dnet
 
 dnet configure
 
-echo "turn on wallets [test set 42sec estimated]"
+echo "turn on wallets [test set 35sec estimated]"
 dnet start
-sleep 10
-dnet importkey
-sleep 2
-#i think the first time is ignored
+sleep 5
 dnet importkey
 sleep 30
 dnet cashreserve 100000000
