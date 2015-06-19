@@ -30,8 +30,8 @@ else
 	echo "rpcuser=$RPCUSER" >> $CONFIG
 	echo "rpcpassword=$RPCPASS" >> $CONFIG
 	if [ -e "deerserv/deersrv/costants.py" ]; then
-		echo "RPC_USER = \"$RPCUSER\"" >> $SCRIPTSPATH/deersrv/costants.py
-		echo "RPC_PASSWORD = \"$RPCPASS\"" >> $SCRIPTSPATH/deersrv/costants.py
+		echo "RPC_USER = \"$RPCUSER\"" >> $SCRIPTSPATH/deersrv/deersrv/costants.py
+		echo "RPC_PASSWORD = \"$RPCPASS\"" >> $SCRIPTSPATH/deersrv/deersrv/costants.py
 		loc=$(pwd) && cd $SCRIPTSPATH/deersrv/ && python setup.py install && cd $loc
 	fi
 	echo "txindex=1" >> $CONFIG
