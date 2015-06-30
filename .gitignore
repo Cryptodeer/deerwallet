@@ -1,0 +1,4 @@
+docs/endpoint
+scripts/deer*
+external/ngx*
+nohup.out

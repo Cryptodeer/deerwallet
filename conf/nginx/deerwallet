@@ -1,4 +1,4 @@
-location = /test_deerwallet {
+location = /deerwallet {
     rewrite_by_lua '
         json = require("cjson")
         ngx.req.read_body()
